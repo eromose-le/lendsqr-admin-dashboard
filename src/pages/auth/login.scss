@@ -121,22 +121,25 @@
             width: 100%;
             border: none;
             padding: 15px;
-            -webkit-text-fill-color: $lightBlue !important;
+            -webkit-text-fill-color: $primary-lighter !important;
+            color: $primary-lighter;
           }
 
           input::placeholder {
-            color: $lightBlue;
+            color: $primary-lighter;
+            opacity: 0.5;
             font-weight: $font-weight-thin;
-            -webkit-text-fill-color: $lightBlue !important;
+            -webkit-text-fill-color: $primary-lighter !important;
           }
 
           input:-webkit-autofill {
+            color: $primary-lighter;
             padding: 1em;
             border: none;
             border-radius: 5px;
             -webkit-box-shadow: 0 0 0px 1000px $tertiary-white-lighter inset;
             box-shadow: 0 0 0px 1000px $tertiary-white-lighter inset;
-            -webkit-text-fill-color: $lightBlue !important;
+            -webkit-text-fill-color: $primary-lighter !important;
           }
 
           span {
@@ -145,7 +148,7 @@
             justify-content: center;
             flex-direction: column;
             padding-inline: 16px;
-            color: $lightGreen;
+            color: $secondary-light;
             font-size: 12px;
             font-weight: $font-weight-medium;
             text-transform: uppercase;
@@ -154,14 +157,14 @@
       }
       .forgotPassword {
         font-size: $font-caption;
-        color: $lightGreen;
+        color: $secondary-light;
         font-size: 12px;
         font-weight: $font-weight-medium;
         text-transform: uppercase;
       }
 
       .button {
-        background-color: $lightGreen;
+        background-color: $secondary-light;
         color: $tertiary-white-lighter;
         border: none;
         width: 100%;
