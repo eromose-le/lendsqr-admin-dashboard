@@ -1,0 +1,191 @@
+@import "@/styles/variables.scss";
+@import "@/styles/breakpoints.scss";
+
+.login {
+  background-color: $tertiary-white-lighter;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+
+  @include sm {
+    padding-left: 0px;
+  }
+
+  .logoContainer {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+
+    img {
+      width: 70%;
+      height: 30%;
+    }
+
+    @include sm {
+      left: 10%;
+
+      img {
+        width: 60%;
+      }
+    }
+  }
+
+  .left {
+    flex: 1;
+    padding: 30px;
+
+    .loginBgImgContainer {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    @include sm {
+      display: none;
+      .loginBgImgContainer {
+        display: none;
+      }
+    }
+  }
+
+  .right {
+    flex: 1;
+    background-color: $tertiary-white-lighter;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10% 0 5%;
+    box-shadow: 0px 15px 90px rgba(0, 0, 0, 0.03);
+
+    .formContainer {
+      width: 100%;
+      max-width: 447px;
+
+      .header {
+        font-size: 40px;
+
+        .title {
+          font-size: $font-2xl;
+          color: $darkBlue;
+          font-family: $avenir-next-font;
+          font-weight: $font-weight-bold;
+          margin: 0px;
+        }
+
+        .subTitle {
+          font-family: $avenir-next-font;
+          font-weight: $font-weight-thin;
+          font-size: 20px;
+          margin: 0px;
+        }
+
+        margin: 0 0 30px 0;
+
+        @include sm {
+          .title {
+            font-size: $font-xl;
+          }
+
+          .subTitle {
+            font-size: $font-small;
+          }
+        }
+      }
+
+      .inputWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        .inputContainer {
+          border: none;
+          border: 2px solid $borderGrey;
+          border-radius: 5px;
+          gap: 4px;
+          display: flex;
+
+          .input {
+            display: flex;
+            width: 100%;
+            border: none;
+            padding: 15px;
+            -webkit-text-fill-color: $lightBlue !important;
+          }
+
+          input::placeholder {
+            color: $lightBlue;
+            font-weight: $font-weight-thin;
+            -webkit-text-fill-color: $lightBlue !important;
+          }
+
+          input:-webkit-autofill {
+            padding: 1em;
+            border: none;
+            border-radius: 5px;
+            -webkit-box-shadow: 0 0 0px 1000px $tertiary-white-lighter inset;
+            box-shadow: 0 0 0px 1000px $tertiary-white-lighter inset;
+            -webkit-text-fill-color: $lightBlue !important;
+          }
+
+          span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding-inline: 16px;
+            color: $lightGreen;
+            font-size: 12px;
+            font-weight: $font-weight-medium;
+            text-transform: uppercase;
+          }
+        }
+      }
+      .forgotPassword {
+        font-size: $font-caption;
+        color: $lightGreen;
+        font-size: 12px;
+        font-weight: $font-weight-medium;
+        text-transform: uppercase;
+      }
+
+      .button {
+        background-color: $lightGreen;
+        color: $tertiary-white-lighter;
+        border: none;
+        width: 100%;
+        margin-top: 30px;
+        text-transform: uppercase;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+
+        padding: 13px;
+        border-radius: 5px;
+        font-weight: $font-weight-medium;
+
+        @include sm {
+          font-size: $font-caption;
+        }
+      }
+    }
+
+    @include sm {
+      justify-content: center;
+      padding: 0 5% 0 5%;
+    }
+  }
+}

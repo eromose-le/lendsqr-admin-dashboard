@@ -10,8 +10,8 @@
     font-family: $body-font-family;
     font-size: $base-font-size;
     line-height: $base-line-height;
-    color: $body-color;
-    background-color: $background-color;
+    color: $primary-lighter;
+    background-color: $tertiary-white-dark;
   }
 
   h1,
@@ -20,46 +20,40 @@
   h4,
   h5,
   h6 {
-    font-family: $heading-font-family;
-    color: $heading-color;
+    font-family: $work-sans-font;
+    color: $primary-dark;
     margin: 0;
   }
 
   h1 {
-    font-size: 2em;
-    margin-bottom: 0.5em;
+    font-size: 2.5rem; // 40px
 
-    @include xs {
-      display: none;
+    @include sm {
+      font-size: 1.25rem; // 20px
     }
   }
 
   h2 {
-    font-size: 1.75em;
-    margin-bottom: 0.5em;
+    font-size: 1.5rem; // 24px
   }
 
   h3 {
-    font-size: 1.5em;
-    margin-bottom: 0.5em;
+    font-size: 1.25rem; // 20px
   }
 
   h4 {
-    font-size: 1.25em;
-    margin-bottom: 0.5em;
+    font-size: 1rem; // 16px
   }
 
   h5 {
-    font-size: 1em;
-    margin-bottom: 0.5em;
+    font-size: 0.875rem; // 14px;
   }
 
   h6 {
-    font-size: 0.875em;
-    margin-bottom: 0.5em;
+    font-size: 0.75rem; // 12px
   }
 
   p {
-    margin: 0 0 1em;
+    font-size: 0.75rem; // 12px
   }
 }

@@ -6,13 +6,7 @@ import { Navigate, Outlet } from "react-router-dom";
 
 function PublicRoutesLayout() {
   <Navigate to={routeEnum.LOGIN} />;
-  return (
-    <div className="layout">
-      <div className="content">
-        <Outlet />
-      </div>
-    </div>
-  );
+  return <Outlet />;
 }
 
 function ProtectRoutesLayout() {
