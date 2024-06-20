@@ -1,0 +1,25 @@
+@import "./variables";
+
+@mixin xs {
+  @media (max-width: $breakpoints-xs) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media (max-width: $breakpoints-sm) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: $breakpoints-md) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (max-width: $breakpoints-lg) {
+    @content;
+  }
+}

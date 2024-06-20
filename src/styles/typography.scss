@@ -1,0 +1,65 @@
+// Import Google Fonts
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap");
+
+// Import Variables
+@import "./variables";
+@import "./breakpoints";
+
+@mixin typography {
+  body {
+    font-family: $body-font-family;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    color: $body-color;
+    background-color: $background-color;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: $heading-font-family;
+    color: $heading-color;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+
+    @include xs {
+      display: none;
+    }
+  }
+
+  h2 {
+    font-size: 1.75em;
+    margin-bottom: 0.5em;
+  }
+
+  h3 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+  }
+
+  h4 {
+    font-size: 1.25em;
+    margin-bottom: 0.5em;
+  }
+
+  h5 {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+  }
+
+  h6 {
+    font-size: 0.875em;
+    margin-bottom: 0.5em;
+  }
+
+  p {
+    margin: 0 0 1em;
+  }
+}
