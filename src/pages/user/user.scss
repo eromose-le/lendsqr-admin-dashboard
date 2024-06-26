@@ -1,0 +1,361 @@
+@import "@/styles/variables.scss";
+@import "@/styles/breakpoints.scss";
+
+.dashboard {
+  // background-color: green;
+  width: 100%;
+  padding: 0%;
+  margin: 0%;
+
+  .header {
+    background-color: $tertiary-white;
+    width: 100%;
+    .navigation {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+      cursor: pointer;
+
+      &:hover {
+        color: $darkBlue;
+        transition: ease-in-out 0.2s;
+      }
+
+      p {
+        margin-left: 10px;
+        font-size: $fs-8;
+
+        @media (max-width: 900px) {
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+    .userDetailContainer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-block: 20px;
+
+      h3 {
+        color: $darkBlue;
+        font-size: $fs-5;
+        font-weight: $fw-500;
+
+        @media (max-width: 900px) {
+          font-size: 1.2rem;
+        }
+
+        @media (max-width: 500px) {
+          font-size: 0.95rem;
+        }
+      }
+
+      .userDetailsButtonContainer {
+        display: flex;
+        align-items: center;
+        font-size: $fs-10;
+        font-weight: $fw-600;
+
+        button {
+          border: 1px solid $red;
+          color: $red;
+          border-radius: 8px;
+          padding: 0.8em 1.2em;
+          text-transform: uppercase;
+          font-size: $fs-10;
+          cursor: pointer;
+
+          &:hover,
+          &active,
+          &:focus {
+            background-color: $white;
+            opacity: 0.7;
+          }
+          @media (max-width: 900px) {
+            font-size: 0.6rem;
+          }
+        }
+
+        button:last-child {
+          border: 1px solid $lightGreen;
+          color: $lightGreen;
+          margin-left: 10px;
+        }
+
+        @media (max-width: 515px) {
+          flex-direction: column;
+          align-items: flex-end;
+
+          button {
+            width: 100%;
+            margin-block: 4px;
+          }
+        }
+      }
+    }
+
+    .userInfoContainer {
+      background: $white;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+
+      .catUserIcon {
+        border-radius: 50%;
+      }
+      .divider {
+        height: 60px;
+        width: 2px;
+        background: $opacityBlue;
+        margin-inline: 20px;
+      }
+
+      .cat1 {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        .name {
+          color: $darkBlue;
+          font-weight: $fw-500;
+          font-size: $fs-6;
+          margin-bottom: 6px;
+        }
+
+        .id {
+          color: $lightBlue;
+          font-weight: $fw-400;
+          font-size: $fs-10;
+        }
+
+        @media (max-width: 900px) {
+          img {
+            width: 20%;
+            height: 20%;
+          }
+
+          .name {
+            font-size: $fs-9;
+          }
+        }
+      }
+
+      .cat2 {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 8px;
+        .tierInfo {
+          color: $lightBlue;
+          font-weight: $fw-500;
+          font-size: $fs-10;
+          margin-left: 5px;
+        }
+      }
+
+      .userAccountInfo {
+        .amount {
+          color: $darkBlue;
+          font-weight: $fw-500;
+          font-size: $fs-6;
+          margin-bottom: 6px;
+        }
+
+        .bankName {
+          color: $lightBlue;
+          font-weight: $fw-400;
+          font-size: $fs-10;
+        }
+
+        @media (max-width: 900px) {
+          .amount {
+            font-size: $fs-9;
+          }
+        }
+      }
+
+      @media (max-width: 700px) {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .divider {
+          display: none;
+        }
+      }
+    }
+
+    .dashNav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      background-color: $white;
+      width: 100%;
+      padding-top: 20px;
+      // padding-inline: 20px;
+      // background-color: red;
+
+      .dashNavWrapper {
+        // display: flex;
+        // align-items: center;
+        // justify-content: space-around;
+        // flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-gap: 0px;
+        // gap: 20px;
+        .dashLink {
+          color: $black;
+          font-size: $fs-8;
+          font-weight: $fw-400;
+          // background-color: yellow;
+          min-width: 130px;
+          // width: max-content;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding-bottom: 8px;
+          margin: 10px 10px 0 10px;
+
+          &:hover,
+          &:focus,
+          &:active {
+            border-bottom: 2px solid $lightGreen;
+            color: $lightGreen;
+            transition: ease-in-out 0.2s;
+          }
+        }
+        .dashLink.active {
+          border-bottom: 2px solid $lightGreen;
+          color: $lightGreen;
+        }
+
+        @media (max-width: 1170px) {
+          grid-template-columns: repeat(4, 1fr);
+
+          .dashInfoHeader {
+            grid-column: span 1;
+          }
+        }
+
+        @include sm {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        @media (max-width: 565px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    }
+
+    @media (max-width: 700px) {
+      .userInfoContainer > * {
+        margin-block: 5px;
+        border-bottom: 1px solid $opacityBlue;
+        width: 100%;
+        padding: 10px;
+      }
+      .userAccountInfo {
+        border: none;
+      }
+    }
+  }
+
+  .dashInfoBodyContainer {
+    background-color: $white;
+    border: 1px solid rgba(33, 63, 125, 0.06);
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    margin-top: 20px;
+    // background-color: red;
+    padding: 20px;
+
+    .dashInfoItemBox {
+      padding: 10px 30px 10px 0;
+      border-bottom: 2px solid $opacityBlue;
+      // background-color: yellow;
+
+      // title
+      .dashInfoHeader {
+        font-size: $fs-8;
+        font-weight: $fw-500;
+        margin-bottom: 20px;
+        padding-top: 10px;
+        color: $darkBlue;
+      }
+
+      // wrapper
+      .dashInfoWrapper {
+        // display: flex;
+        // align-items: center;
+        // justify-content: flex-start;
+        // flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 0px;
+
+        .dashInfoHeader {
+          grid-column: span 3;
+        }
+        .dashInfoBox {
+          width: max-content;
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+          flex-direction: column;
+          margin: 0 3rem 2rem 0;
+
+          .title {
+            font-size: $fs-10;
+            font-weight: $fw-400;
+            padding: 0;
+            margin: 0;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            color: $lightBlue;
+          }
+
+          .info {
+            font-size: $fs-8;
+            font-weight: $fw-500;
+            color: $darkBlue;
+          }
+
+          @media (max-width: 700px) {
+            min-width: 90%;
+          }
+
+          @media (max-width: 500px) {
+            width: 100px;
+          }
+        }
+
+        @media (max-width: 1190px) {
+          grid-template-columns: repeat(4, 1fr);
+
+          .dashInfoHeader {
+            grid-column: span 1;
+          }
+        }
+        @media (max-width: 1058px) {
+          grid-template-columns: repeat(3, 1fr);
+
+          .dashInfoHeader {
+            grid-column: span 1;
+          }
+        }
+
+        @include sm {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 600px) {
+        padding-right: 0;
+      }
+    }
+
+    .dashInfoItemBox:last-child {
+      border-bottom: none;
+    }
+  }
+}
