@@ -1,6 +1,5 @@
 import "./common.scss";
 import config from "@/configs/config";
-import useLogout from "@/hooks/useLogout";
 import { gotoEmailBox } from "@/utils/gotoEmailBox";
 
 interface ErrorDialogProps {
@@ -15,7 +14,6 @@ interface ErrorDialogProps {
  */
 export function ErrorDialog(props: ErrorDialogProps) {
   const { title, description, onRetry, retryText, ...rest } = props;
-  const { logout } = useLogout();
   function handleRetry(e: any) {
     e.stopPropagation();
     if (onRetry) {
@@ -31,9 +29,6 @@ export function ErrorDialog(props: ErrorDialogProps) {
           <p>{description}</p>
         </section>
         <section className="actionContainer">
-          <button onClick={logout} color="error">
-            Reset
-          </button>
           <button onClick={handleRetry}>{retryText}</button>
         </section>
       </div>

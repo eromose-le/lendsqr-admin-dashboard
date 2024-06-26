@@ -8,10 +8,9 @@ interface AuthGuardProps {
   route: any;
 }
 
-// TODO: add useAuthUser Hook
 // PS: This can be extended as we see fit
 function AuthGuard({ component }: AuthGuardProps): ReactElement {
-  const isAuthorized = false;
+  const isAuthorized = true;
 
   if (!isAuthorized) {
     return <Navigate to={routeEnum.LOGIN} replace />;
