@@ -1,0 +1,221 @@
+@import "@/styles/variables.scss";
+
+.navbar {
+  width: 100%;
+  background-color: $white;
+  height: 90px;
+  color: $lightBlue;
+  font-size: $fs-8;
+  font-family: $body-font-family;
+  display: flex;
+  align-items: center;
+  padding-inline: 20px;
+  box-shadow: 3px 0px 20px 0px #0000000A;
+  z-index: 100;
+
+  .left {
+    flex: 1;
+    // background: pink;
+    width: 100%;
+    .logoContainer {
+      img {
+        width: 130px;
+        height: 40px;
+        cursor: pointer;
+      }
+
+      @media (max-width: 700px) {
+        img {
+          width: 100px;
+        }
+      }
+    }
+  }
+
+  .right {
+    flex: 7;
+    display: flex;
+    align-items: center;
+    // background: peachpuff;
+
+    .searchContainer {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      justify-content: center;
+      font-size: $fs-8;
+      color: $lightBlue;
+
+      .searchItem {
+        display: flex;
+        align-items: center;
+        background-color: $white;
+        border: 1px solid $borderGrey;
+        border-radius: 8px;
+        position: relative;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        width: 60%;
+
+        input {
+          flex: 3;
+          padding: 0.8em 1.5em;
+          border-radius: 5px;
+          font-size: $fs-10;
+        }
+        input:-webkit-autofill {
+          flex: 3;
+          padding: 0.8em 1.5em;
+          border-radius: 5px;
+        }
+        input::placeholder {
+          color: $lightBlue;
+          font-size: $fs-10;
+        }
+
+        button {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          padding-inline: 20px;
+          background-color: $lightGreen;
+          border-top-right-radius: 8px;
+          border-bottom-right-radius: 8px;
+          img {
+            object-fit: contain;
+          }
+        }
+      }
+
+      @media (max-width: 550px) {
+        .searchItem {
+          display: none;
+        }
+      }
+    }
+
+    .actionToggle {
+      display: flex;
+      align-items: center;
+
+      #user {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+        border-radius: 50%;
+      }
+      .arrow {
+        width: 10px;
+        height: 10px;
+      }
+      .hambug {
+        width: 20px;
+        height: 20px;
+        display: none;
+      }
+
+      // drop down container
+      .dropdownContainer {
+        position: absolute;
+        background-color: $white;
+        top: 90px;
+        right: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: $fs-8;
+        width: 100px;
+        border: 1px solid $borderGrey;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // display: none;
+      }
+
+      button {
+        width: 100%;
+        // background-color: red;
+        padding: 10px;
+        margin-block: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+          background-color: $borderGrey;
+          transition: ease-in-out 0.2s;
+        }
+      }
+
+      .action {
+        cursor: pointer;
+      }
+
+      // hide when not in view
+      @media (min-width: 850px) {
+        display: none;
+      }
+
+      @media (max-width: 550px) {
+        .arrow,
+        #user {
+          display: none;
+        }
+
+        .hambug {
+          display: block;
+        }
+
+        .dropdownContainer {
+          #user {
+            display: block;
+          }
+        }
+      }
+    }
+
+    .actionContainer {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+      font-size: $fs-8;
+
+      .action {
+        margin-inline: 10px;
+        cursor: pointer;
+      }
+
+      .link {
+        text-decoration: underline;
+        color: $darkBlue;
+        font-weight: $fw-400;
+      }
+
+      .user {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+        border-radius: 50%;
+      }
+
+      .arrow {
+        margin-left: -5px;
+      }
+    }
+
+    @media (max-width: 850px) {
+      .actionContainer {
+        display: none;
+      }
+    }
+  }
+}
+
+.navbar.fixed {
+  position: fixed;
+  top: 0;
+  box-shadow: none;
+}

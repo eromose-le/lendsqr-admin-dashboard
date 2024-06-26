@@ -1,0 +1,181 @@
+@import "@/styles/variables.scss";
+
+.sidebar {
+  width: 100%;
+  height: 100%;
+
+  .headerItemContainer {
+    // section
+    // section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: $fs-8;
+    font-weight: $fw-400;
+    width: 100%;
+    padding: 10px 10px 10px 20px;
+
+    p {
+      margin-left: 10px;
+    }
+
+    span {
+      margin-left: 5px;
+    }
+
+    @media (max-width: 900px) {
+      p,
+      span {
+        font-size: $fs-10;
+      }
+    }
+
+    @media (max-width: 700px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 5px 10px 5px;
+      img {
+        width: 16px;
+        height: 16px;
+      }
+
+      .text,
+      span {
+        display: none;
+      }
+    }
+    // }
+    padding-block: 30px;
+
+    .text {
+      cursor: pointer;
+      color: $primary-dark;
+      font-weight: $fw-500;
+      margin-right: 5px;
+
+      &:hover,
+      &active,
+      &focus {
+        color: $primary-dark;
+      }
+    }
+
+    &:hover {
+      border-left: 3px solid $lightGreen;
+      border-left-width: 5px;
+      transition: ease-in-out 0.2s;
+
+      img {
+        margin-left: -4px;
+      }
+    }
+  }
+
+  .itemContainer {
+    // section
+    // section {
+    display: flex;
+    align-items: center;
+    font-size: $fs-8;
+    font-weight: $fw-400;
+    width: 100%;
+    padding: 10px 10px 10px 20px;
+
+    p {
+      margin-left: 10px;
+    }
+
+    span {
+      margin-left: 5px;
+    }
+
+    @media (max-width: 900px) {
+      p,
+      span {
+        font-size: $fs-10;
+      }
+    }
+
+    @media (max-width: 700px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 5px 10px 5px;
+      img {
+        width: 16px;
+        height: 16px;
+      }
+
+      .text,
+      span {
+        display: none;
+      }
+    }
+    // }
+    margin-block: 10px;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      background-color: $opacityGreen;
+      border-left: 3px solid $lightGreen;
+      border-left-width: 5px;
+      color: $primary-dark;
+      font-weight: $fw-400;
+      transition: ease-in-out 0.2s;
+
+      img {
+        margin-left: -4px;
+      }
+    }
+
+    .text {
+      color: $lightBlue;
+
+      &:hover,
+      &active,
+      &focus {
+        color: $primary-dark;
+      }
+    }
+  }
+
+  .title {
+    font-size: $fs-10;
+    text-transform: uppercase;
+    padding: 10px;
+
+    @media (max-width: 700px) {
+      text-align: center;
+      font-size: 0.7rem;
+    }
+
+    @media (max-width: 550px) {
+      text-align: center;
+      font-size: 0.6rem;
+    }
+  }
+
+  .lastItem {
+    margin-block: 20px;
+    border-top: 2px solid $opacityBlue;
+  }
+
+  .logout {
+    border-top: 2px solid $opacityBlue;
+    margin-block: 30px;
+  }
+
+  @media (max-width: 370px) {
+    width: 100%;
+
+    .title {
+      display: none;
+    }
+
+    .itemContainer {
+      padding: 10px;
+    }
+  }
+}
