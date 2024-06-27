@@ -7,7 +7,7 @@ interface PaginationProps {
   onPageChange: (page: number) => void;
 }
 
-const TablePagination2: React.FC<PaginationProps> = ({
+const TablePagination: React.FC<PaginationProps> = ({
   currentPage,
   totalPages,
   onPageChange,
@@ -69,4 +69,4 @@ const TablePagination2: React.FC<PaginationProps> = ({
   );
 };
 
-export default TablePagination2;
+export default TablePagination;

@@ -10,10 +10,12 @@ import {
 } from "@tanstack/react-table";
 import { UserDetailMenuPop } from "./UserDetailMenuPop";
 import { UserDetailFilterPop } from "./UserDetailFilterPop";
-import TablePagination2 from "./TablePagination";
+import TablePagination from "./TablePagination";
 import "../pages/user/pagination.scss";
 import { lendsqlApi } from "@/store/storeQuerySlice";
 import Loading from "./Loading";
+import { routeEnum } from "@/constants/RouteConstants";
+import { useNavigate } from "react-router-dom";
 
 interface User {
   id: string;
@@ -26,13 +28,10 @@ interface User {
 }
 
 export const Table: React.FC = () => {
+  const navigate = useNavigate();
   const usersQueryResult = lendsqlApi.useGetUsersQuery();
   const [isFilterModal, setIsFilterModal] = useState(false);
   const [openMenuRowId, setOpenMenuRowId] = useState<string | null>(null);
-
-  if (usersQueryResult.isLoading) {
-    return <Loading />;
-  }
 
   const data = usersQueryResult?.isSuccess ? usersQueryResult?.data : [];
 
@@ -157,7 +156,15 @@ export const Table: React.FC = () => {
                   {table.getRowModel().rows.map((row) => (
                     <tr key={row.id}>
                       {row.getVisibleCells().map((cell) => (
-                        <td key={cell.id}>
+                        <td
+                          key={cell.id}
+                          onClick={() => {
+                            if (
+                              cell.getContext()?.cell?.column?.id !== "action"
+                            )
+                              navigate(routeEnum.USERS_DETAILS);
+                          }}
+                        >
                           {flexRender(
                             cell.column.columnDef.cell,
                             cell.getContext()
@@ -195,7 +202,7 @@ export const Table: React.FC = () => {
               </div>
               <p className="paginateText">out of {data.length}</p>
             </div>
-            <TablePagination2
+            <TablePagination
               currentPage={table.getState().pagination.pageIndex + 1}
               totalPages={table.getPageCount()}
               onPageChange={(page: any) => table.setPageIndex(page - 1)}
@@ -203,7 +210,7 @@ export const Table: React.FC = () => {
           </div>
         </>
       ) : (
-        ""
+        <Loading />
       )}
     </>
   );

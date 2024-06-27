@@ -11,6 +11,7 @@ import GuarantorInformation from "@/common/GuarantorInfomation";
 import UserDetailTabSwitcher from "@/common/UserDetailTabSwitcher";
 import UserInformationHeader from "@/common/UserInformationHeader";
 import { useSelector } from "react-redux";
+import Loading from "@/common/Loading";
 
 const UserDetails: FC = () => {
   const navigate = useNavigate();
@@ -25,6 +26,10 @@ const UserDetails: FC = () => {
   const userQueryResult = !!userDetailsExist
     ? userDetailsExist
     : userQueryResultResponse?.data;
+
+    if (userQueryResultResponse.isLoading) {
+      <Loading />;
+    }
 
   return (
     <div className="dashboard">
