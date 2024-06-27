@@ -1,9 +1,12 @@
 import "./login.scss";
 import { assets } from "@/assets/constants";
+import { routeEnum } from "@/constants/RouteConstants";
 import { FC, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login: FC = () => {
   const [isShow, setIsShow] = useState(false);
+  const navigate = useNavigate();
   return (
     <section className="login">
       <div className="logoContainer">
@@ -51,7 +54,12 @@ const Login: FC = () => {
             <h3 className="forgotPassword">forgot password?</h3>
           </div>
 
-          <button className="button">log in</button>
+          <button
+            className="button"
+            onClick={() => navigate(routeEnum.DASHBOARD)}
+          >
+            log in
+          </button>
         </form>
       </div>
     </section>

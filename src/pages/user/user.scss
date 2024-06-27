@@ -54,7 +54,7 @@
       .userDetailsButtonContainer {
         display: flex;
         align-items: center;
-        font-size: $fs-10;
+        font-size: $font-small;
         font-weight: $fw-600;
 
         button {
@@ -63,7 +63,7 @@
           border-radius: 8px;
           padding: 0.8em 1.2em;
           text-transform: uppercase;
-          font-size: $fs-10;
+          font-size: $font-small;
           cursor: pointer;
 
           &:hover,
@@ -108,7 +108,7 @@
         height: 60px;
         width: 2px;
         background: $opacityBlue;
-        margin-inline: 20px;
+        margin-inline: 30px;
       }
 
       .cat1 {
@@ -118,15 +118,15 @@
 
         .name {
           color: $darkBlue;
-          font-weight: $fw-500;
-          font-size: $fs-6;
+          font-size: 22px;
+          font-weight: $font-weight-light;
           margin-bottom: 6px;
         }
 
         .id {
           color: $lightBlue;
-          font-weight: $fw-400;
-          font-size: $fs-10;
+          font-weight: $font-weight-thin;
+          font-size: $font-small;
         }
 
         @media (max-width: 900px) {
@@ -149,23 +149,22 @@
         .tierInfo {
           color: $lightBlue;
           font-weight: $fw-500;
-          font-size: $fs-10;
-          margin-left: 5px;
+          font-size: $font-small;
         }
       }
 
       .userAccountInfo {
         .amount {
           color: $darkBlue;
-          font-weight: $fw-500;
-          font-size: $fs-6;
+          font-size: 22px;
+          font-weight: $font-weight-light;
           margin-bottom: 6px;
         }
 
         .bankName {
           color: $lightBlue;
-          font-weight: $fw-400;
-          font-size: $fs-10;
+          font-weight: $font-weight-thin;
+          font-size: $font-small;
         }
 
         @media (max-width: 900px) {
@@ -207,7 +206,7 @@
         .dashLink {
           color: $black;
           font-size: $fs-8;
-          font-weight: $fw-400;
+          font-weight: $font-weight-thin;
           // background-color: yellow;
           min-width: 130px;
           // width: max-content;
@@ -266,7 +265,6 @@
     box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
     border-radius: 4px;
     margin-top: 20px;
-    // background-color: red;
     padding: 20px;
 
     .dashInfoItemBox {
@@ -276,8 +274,8 @@
 
       // title
       .dashInfoHeader {
-        font-size: $fs-8;
-        font-weight: $fw-500;
+        font-size: $font-medium;
+        font-weight: $font-weight-light;
         margin-bottom: 20px;
         padding-top: 10px;
         color: $darkBlue;
@@ -302,11 +300,11 @@
           align-items: flex-start;
           justify-content: flex-start;
           flex-direction: column;
-          margin: 0 3rem 2rem 0;
+          margin: 0 2rem 2rem 0;
 
           .title {
-            font-size: $fs-10;
-            font-weight: $fw-400;
+            font-size: $font-caption;
+            font-weight: $font-weight-thin;
             padding: 0;
             margin: 0;
             margin-bottom: 5px;
@@ -315,8 +313,8 @@
           }
 
           .info {
-            font-size: $fs-8;
-            font-weight: $fw-500;
+            font-size: $font-medium;
+            font-weight: $font-weight-light;
             color: $darkBlue;
           }
 
@@ -346,6 +344,9 @@
 
         @include sm {
           grid-template-columns: repeat(2, 1fr);
+        }
+        @include xs {
+          grid-template-columns: repeat(1, 1fr);
         }
       }
 

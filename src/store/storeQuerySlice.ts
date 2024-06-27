@@ -3,27 +3,41 @@ import axiosBaseQuery from "@/utils/axios-base-request";
 
 import { LendsqlHttp } from "../configs/HttpConfig";
 import { RtkqTagEnum } from "@/constants/Strings";
-import { User, Users } from "@/types/user";
+import { UserDetail, Users } from "@/types/user";
 import { updateUserDetails } from "./storeSlice";
+
+// Function to simulate a delay
+const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
+
+const fetchUsersData = async () => {
+  const response = await import("../data.ts");
+  return response.USERS_DATA;
+};
+
+const fetchUserDetailData = async () => {
+  const response = await import("../data.ts");
+  return response.USER_DETAIL;
+};
 
 export const lendsqlApi = createApi({
   reducerPath: "lendsql",
   baseQuery: axiosBaseQuery({}, LendsqlHttp),
   tagTypes: [RtkqTagEnum.USERS],
   endpoints: (builder) => ({
-    getUsers: builder.query<Users, void>({
-      query: () => ({
-        url: `/5c284082-0921-4612-8ffa-8ce5e22352c6`,
-        method: "GET",
-      }),
+    getUsers: builder.query<Users[], void>({
+      queryFn: async () => {
+        await delay(1000);
+        const data = await fetchUsersData();
+        return { data };
+      },
       providesTags: [RtkqTagEnum.USERS],
     }),
-
-    getUser: builder.query<User, void>({
-      query: () => ({
-        url: `/02a90542-16e8-4f69-983e-f4cf96d7a550`,
-        method: "GET",
-      }),
+    getUser: builder.query<UserDetail, void>({
+      queryFn: async () => {
+        await delay(1000);
+        const data = await fetchUserDetailData();
+        return { data };
+      },
       onQueryStarted: async (arg, { queryFulfilled, dispatch }) => {
         try {
           const data = await queryFulfilled;
@@ -31,7 +45,7 @@ export const lendsqlApi = createApi({
           dispatch(updateUserDetails(data?.data));
         } catch (error) {}
       },
-      providesTags: [RtkqTagEnum.USER],
+      providesTags: [RtkqTagEnum.USERS],
     }),
     logout: builder.mutation({
       query: (data) => ({

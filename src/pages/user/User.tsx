@@ -1,10 +1,3 @@
-// import { FC } from "react";
-
-// const User: FC = () => {
-//   return <div>DashboardUser Page</div>;
-// };
-
-// export default User;
 import Suspense from "@/common/Suspense";
 import { RoutePaths } from "@/constants/RouteConstants";
 import { lazy } from "react";

@@ -71,6 +71,9 @@ storeQ.subscribe(
 export function rtkqOnResetMiddleware(...apis: any[]) {
   return (store: any) => (next: any) => (action: any) => {
     const result = next(action);
+    // for (const api of apis) {
+    //   store.dispatch(api.util.resetApiState());
+    // }
     return result;
   };
 }

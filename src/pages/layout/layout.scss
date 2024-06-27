@@ -99,7 +99,7 @@
   .side {
     background: $white;
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
-    min-height: 100vh; // Ensure sidebar spans the full height
+    min-height: 100%; // Ensure sidebar spans the full height
 
     @media (max-width: 900px) {
       grid-column: span 1;

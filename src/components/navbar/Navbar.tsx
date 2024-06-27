@@ -12,14 +12,12 @@ const Navbar: FC = () => {
   const showNavBar = () => (useYPosition() >= 200 ? "navbar fixed" : "navbar");
   return (
     <section className={showNavBar()}>
-      {/* logo */}
       <div className="left">
         <div onClick={() => navigate("/")} className="logoContainer">
           <img src={assets.logo} alt="logo" />
         </div>
       </div>
 
-      {/* right */}
       <div className="right">
         <div className="searchContainer">
           <div className="searchItem">
@@ -30,10 +28,9 @@ const Navbar: FC = () => {
           </div>
         </div>
 
-        {/* toggle view */}
         <div className="actionToggle" onClick={() => setIsToggle(!isToggle)}>
           <img
-            className="action"
+            className="action user"
             id="user"
             src="https://i.ibb.co/2jNk5WT/BA-png-black.png"
             alt="user"
@@ -54,7 +51,6 @@ const Navbar: FC = () => {
             />
           )}
 
-          {/* drop down */}
           {isToggle && (
             <div className="dropdownContainer">
               <button>
@@ -66,7 +62,7 @@ const Navbar: FC = () => {
               </button>
               <button>
                 <img
-                  className="action"
+                  className="action user"
                   id="user"
                   src="https://i.ibb.co/2jNk5WT/BA-png-black.png"
                   alt="user"
@@ -86,7 +82,6 @@ const Navbar: FC = () => {
           )}
         </div>
 
-        {/* actions */}
         <div className="actionContainer">
           <a className="action link" href="/">
             Docs
