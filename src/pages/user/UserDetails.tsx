@@ -1,4 +1,4 @@
-import "./user.scss";
+import "./styles/user.scss";
 import { lendsqlApi } from "@/store/storeQuerySlice";
 
 import { FC } from "react";

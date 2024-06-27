@@ -11,7 +11,7 @@ import {
 import { UserDetailMenuPop } from "./UserDetailMenuPop";
 import { UserDetailFilterPop } from "./UserDetailFilterPop";
 import TablePagination from "./TablePagination";
-import "../pages/user/pagination.scss";
+import "../pages/user/styles/pagination.scss";
 import { lendsqlApi } from "@/store/storeQuerySlice";
 import Loading from "./Loading";
 import { routeEnum } from "@/constants/RouteConstants";

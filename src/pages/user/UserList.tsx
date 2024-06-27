@@ -1,6 +1,6 @@
 import { Statistics } from "@/common/Statistics";
 import { FC } from "react";
-import "./table.scss";
+import "./styles/table.scss";
 import { Table } from "@/common/Table";
 
 const UserList: FC = () => {
