@@ -1,19 +1,9 @@
 import { Statistics } from "@/common/Statistics";
 import { FC } from "react";
 import "./table.scss";
-import { Table2 } from "@/common/Table";
-import { lendsqlApi } from "@/store/storeQuerySlice";
+import { Table } from "@/common/Table";
 
 const UserList: FC = () => {
-  const usersQueryResult = lendsqlApi.useGetUsersQuery();
-
-  if (usersQueryResult.isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  const data = usersQueryResult?.isSuccess ? usersQueryResult?.data : [];
-  
-
   return (
     <div className="dashboard">
       <div className="header">
@@ -26,9 +16,7 @@ const UserList: FC = () => {
         </div>
       </div>
 
-      {usersQueryResult?.isSuccess ? (
-        <Table2 data={data} />
-      ) : null}
+      <Table />
     </div>
   );
 };

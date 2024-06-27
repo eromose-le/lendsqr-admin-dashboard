@@ -12,6 +12,8 @@ import { UserDetailMenuPop } from "./UserDetailMenuPop";
 import { UserDetailFilterPop } from "./UserDetailFilterPop";
 import TablePagination2 from "./TablePagination";
 import "../pages/user/pagination.scss";
+import { lendsqlApi } from "@/store/storeQuerySlice";
+import Loading from "./Loading";
 
 interface User {
   id: string;
@@ -23,13 +25,16 @@ interface User {
   status: string;
 }
 
-type Props = {
-  data: User[];
-};
-
-export const Table2: React.FC<Props> = ({ data }) => {
+export const Table: React.FC = () => {
+  const usersQueryResult = lendsqlApi.useGetUsersQuery();
   const [isFilterModal, setIsFilterModal] = useState(false);
   const [openMenuRowId, setOpenMenuRowId] = useState<string | null>(null);
+
+  if (usersQueryResult.isLoading) {
+    return <Loading />;
+  }
+
+  const data = usersQueryResult?.isSuccess ? usersQueryResult?.data : [];
 
   const columns: ColumnDef<User>[] = useMemo(
     () => [
@@ -62,9 +67,6 @@ export const Table2: React.FC<Props> = ({ data }) => {
         accessorKey: "createdAt",
         header: "Date joined",
         cell: (props) => {
-          console.log(
-            moment(props.getValue<string>()).format("MMMM Do YYYY, h:mm:ss a")
-          );
           return (
             <p>
               {moment(props.getValue<string>()).format(
@@ -119,84 +121,90 @@ export const Table2: React.FC<Props> = ({ data }) => {
 
   return (
     <>
-      <div className="tableWrapper">
-        {isFilterModal && <UserDetailFilterPop />}
-        <div className="table-container">
-          <table className="table">
-            <thead>
-              {table.getHeaderGroups().map((headerGroup) => (
-                <tr key={headerGroup.id}>
-                  {headerGroup.headers.map((header) => (
-                    <th key={header.id}>
-                      {header.isPlaceholder ? null : (
-                        <div>
+      {usersQueryResult?.isSuccess ? (
+        <>
+          <div className="tableWrapper">
+            {isFilterModal && <UserDetailFilterPop />}
+            <div className="table-container">
+              <table className="table">
+                <thead>
+                  {table.getHeaderGroups().map((headerGroup) => (
+                    <tr key={headerGroup.id}>
+                      {headerGroup.headers.map((header) => (
+                        <th key={header.id}>
+                          {header.isPlaceholder ? null : (
+                            <div>
+                              {flexRender(
+                                header.column.columnDef.header,
+                                header.getContext()
+                              )}
+                              {header.id !== "action" && (
+                                <img
+                                  onClick={handleFilterIconClick}
+                                  className="filterIcon"
+                                  src={assets.filter}
+                                  alt="filter"
+                                />
+                              )}
+                            </div>
+                          )}
+                        </th>
+                      ))}
+                    </tr>
+                  ))}
+                </thead>
+                <tbody>
+                  {table.getRowModel().rows.map((row) => (
+                    <tr key={row.id}>
+                      {row.getVisibleCells().map((cell) => (
+                        <td key={cell.id}>
                           {flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
+                            cell.column.columnDef.cell,
+                            cell.getContext()
                           )}
-                          {header.id !== "action" && (
-                            <img
-                              onClick={handleFilterIconClick}
-                              className="filterIcon"
-                              src={assets.filter}
-                              alt="filter"
-                            />
-                          )}
-                        </div>
-                      )}
-                    </th>
+                        </td>
+                      ))}
+                    </tr>
                   ))}
-                </tr>
-              ))}
-            </thead>
-            <tbody>
-              {table.getRowModel().rows.map((row) => (
-                <tr key={row.id}>
-                  {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div className="paginateContainer">
-        <div className="top">
-          <p className="paginateText">Showing</p>
-          <div className="paginateSelectContainer">
-            <select
-              className="paginateSelect"
-              value={table.getState().pagination.pageSize}
-              onChange={(e) => {
-                table.setPageSize(Number(e.target.value));
-              }}
-            >
-              {[100, 200, 300, 400, 500].map((pageSize) => (
-                <option
-                  key={pageSize}
-                  className="paginateOption"
-                  value={pageSize}
-                >
-                  {pageSize}
-                </option>
-              ))}
-            </select>
+                </tbody>
+              </table>
+            </div>
           </div>
-          <p className="paginateText">out of {data.length}</p>
-        </div>
-        <TablePagination2
-          currentPage={table.getState().pagination.pageIndex + 1}
-          totalPages={table.getPageCount()}
-          onPageChange={(page: any) => table.setPageIndex(page - 1)}
-        />
-      </div>
+
+          <div className="paginateContainer">
+            <div className="top">
+              <p className="paginateText">Showing</p>
+              <div className="paginateSelectContainer">
+                <select
+                  className="paginateSelect"
+                  value={table.getState().pagination.pageSize}
+                  onChange={(e) => {
+                    table.setPageSize(Number(e.target.value));
+                  }}
+                >
+                  {[100, 200, 300, 400, 500].map((pageSize) => (
+                    <option
+                      key={pageSize}
+                      className="paginateOption"
+                      value={pageSize}
+                    >
+                      {pageSize}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <p className="paginateText">out of {data.length}</p>
+            </div>
+            <TablePagination2
+              currentPage={table.getState().pagination.pageIndex + 1}
+              totalPages={table.getPageCount()}
+              onPageChange={(page: any) => table.setPageIndex(page - 1)}
+            />
+          </div>
+        </>
+      ) : (
+        ""
+      )}
     </>
   );
 };

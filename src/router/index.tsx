@@ -1,13 +1,13 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import appRoutes from "./routes";
+import Loading from "@/common/Loading";
 
 const router = createBrowserRouter(appRoutes);
 
-// TODO: add loading component
 function AppRouter() {
   return (
-    <RouterProvider router={router} fallbackElement={<h1>Loading...</h1>} />
+    <RouterProvider router={router} fallbackElement={<Loading />} />
   );
 }
 

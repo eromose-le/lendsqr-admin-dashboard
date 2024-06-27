@@ -1,12 +1,12 @@
 import "./app.scss";
+import Loading from "./common/Loading";
 import Suspense from "./common/Suspense";
 import AppRouter from "./router";
 
-// TODO: add loading indicator
 function App() {
   return (
     <>
-      <Suspense fallback={<h1>Loading...</h1>}>
+      <Suspense fallback={<Loading/>}>
         <AppRouter />
       </Suspense>
     </>
