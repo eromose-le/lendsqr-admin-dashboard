@@ -1,10 +1,11 @@
 export type Users = {
-  organization: string;
-  username: string;
+  id: string;
+  orgName: string;
+  userName: string;
   email: string;
-  phone_number: string;
-  date_joined: Date;
-  status: "Inactive" | "Pending" | "Blacklisted";
+  phoneNumber: string;
+  createdAt: string;
+  status: string;
 };
 
 export type User = {
@@ -44,9 +45,8 @@ export type UserGuarantor = {
   relationship: string;
 };
 
-
 export interface UserDetail {
-  profile: Profile;
+  profile: UserDetailProfile;
   email: string;
   tier: string;
   rating: number;
@@ -56,9 +56,9 @@ export interface UserDetail {
   maritalStatus: string;
   children: string;
   residence: string;
-  education: Education;
-  socials: Socials;
-  guarantor: Guarantor;
+  education: UserDetailEducation;
+  socials: UserDetailSocials;
+  guarantor: UserDetailGuarantor;
 }
 
 export interface UserDetailProfile {

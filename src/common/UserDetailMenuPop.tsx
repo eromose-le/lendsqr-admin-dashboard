@@ -22,7 +22,7 @@ export const UserDetailMenuPop: React.FC<UserDetailMenuPopProps> = ({
   userId,
 }) => {
   return (
-    <Link to={`/user/${userId}`} className="detailModalContainer">
+    <Link to={`/users/${userId}`} className="detailModalContainer">
       {menuItems.map((item, index) => (
         <div className="detailModalBox" key={index}>
           <img src={item.imgSrc} alt={item.altText} />

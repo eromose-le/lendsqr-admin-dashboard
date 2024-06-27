@@ -1,4 +1,4 @@
-export const data = [
+export const USERS_DATA = [
   {
     id: "1",
     orgName: "Lendsqr",
@@ -4500,3 +4500,43 @@ export const data = [
     status: "Active",
   },
 ];
+
+export const USER_DETAIL = {
+  profile: {
+    firstName: "Grace",
+    lastName: "Effiom",
+    phoneNumber: "07060780922",
+    bvn: "07060780922",
+    gender: "Female",
+  },
+  email: "grace@gmail.com",
+  tier: "User's Tier",
+  rating: 1,
+  accountBalance: "₦200,000.00",
+  accountNumber: "9912345678",
+  bankName: "Providus Bank",
+  maritalStatus: "Single",
+  children: "None",
+  residence: "Parent's Apartment",
+  education: {
+    level: "B.Sc",
+    sector: "FinTech",
+    employmentStatus: "Employed",
+    duration: "2 years",
+    officeEmail: "grace@lendsqr.com",
+    monthlyIncome: "₦200,000.00 - ₦400,000.00",
+    loanRepayment: "₦40,000.00",
+  },
+  socials: {
+    twitter: "@grace_effiom",
+    facebook: "Grace Effiom",
+    instagram: "@grace_effiom",
+  },
+  guarantor: {
+    firstName: "Debby",
+    lastName: "Ogana",
+    phoneNumber: "07060780922",
+    email: "debby@gmail.com",
+    relationship: "Sister",
+  },
+};

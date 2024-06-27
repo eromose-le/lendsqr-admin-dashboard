@@ -19,7 +19,7 @@ export default function axiosBaseQuery(
     try {
       const response = await http.request({ ...baseConfig, ...config, url });
       return {
-        data: response.data || null,
+        data: response?.data || null,
         meta: { request: response.request, response },
       };
     } catch (error: any) {

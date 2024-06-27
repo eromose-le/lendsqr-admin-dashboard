@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import { assets } from "@/assets/constants";
-import { TableBodyRow } from "./TableBodyRow";
-import { UserDetailFilterPop } from "./UserDetailFilterPop";
 import moment from "moment";
-import { TablePagination } from "./TablePagination";
+import {
+  ColumnDef,
+  flexRender,
+  getCoreRowModel,
+  useReactTable,
+  getPaginationRowModel,
+} from "@tanstack/react-table";
+import { UserDetailMenuPop } from "./UserDetailMenuPop";
+import { UserDetailFilterPop } from "./UserDetailFilterPop";
+import TablePagination2 from "./TablePagination";
+import "../pages/user/pagination.scss";
 
 interface User {
   id: string;
@@ -15,97 +23,180 @@ interface User {
   status: string;
 }
 
-const generateMockData = (): User[] => {
-  const statuses = ["Active", "Pending", "Blacklisted", "Inactive"];
-  const organizations = ["Lendsqr", "Irorun", "Paystack", "Flutterwave"];
-  const mockData: User[] = [];
-
-  for (let i = 1; i <= 500; i++) {
-    const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
-    const randomOrg =
-      organizations[Math.floor(Math.random() * organizations.length)];
-    mockData.push({
-      id: i.toString(),
-      orgName: randomOrg,
-      userName: `User${i}`,
-      email: `user${i}@example.com`,
-      phoneNumber: `080${Math.floor(Math.random() * 1000000000)}`,
-      createdAt: moment()
-        .subtract(Math.floor(Math.random() * 365), "days")
-        .format(),
-      status: randomStatus,
-    });
-  }
-
-  return mockData;
+type Props = {
+  data: User[];
 };
 
-console.log("generateMockData", generateMockData());
-
-const headers = [
-  { label: "Organization", key: "orgName", className: "row-col-1" },
-  { label: "Username", key: "userName", className: "row-col-2" },
-  { label: "Email", key: "email", className: "row-col-3 addSpace2" },
-  { label: "Phone Number", key: "phoneNumber", className: "row-col-4" },
-  { label: "Date Joined", key: "createdAt", className: "row-col-5" },
-  { label: "Status", key: "status", className: "row-col-6" },
-  { label: "", key: "actions", className: "row-col-7" },
-];
-
-export const Table: React.FC = () => {
-  const users = generateMockData();
-
+export const Table2: React.FC<Props> = ({ data }) => {
   const [isFilterModal, setIsFilterModal] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 10;
+  const [openMenuRowId, setOpenMenuRowId] = useState<string | null>(null);
 
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = users.slice(indexOfFirstPost, indexOfLastPost);
+  const columns: ColumnDef<User>[] = useMemo(
+    () => [
+      {
+        accessorKey: "orgName",
+        header: "Organization",
+        cell: (props) => <p>{props.getValue<string>()}</p>,
+      },
+      {
+        accessorKey: "userName",
+        header: "Username",
+        cell: (props) => <p>{props.getValue<string>()}</p>,
+      },
+      {
+        accessorKey: "email",
+        header: "Email",
+        size: 500,
+        cell: (props) => <p>{props?.getValue<string>()}</p>,
+      },
+      {
+        accessorKey: "phoneNumber",
+        header: "Phone number",
+        cell: (props) => (
+          <p>
+            {moment(props.getValue<string>()).format("MMMM Do YYYY, h:mm:ss a")}
+          </p>
+        ),
+      },
+      {
+        accessorKey: "createdAt",
+        header: "Date joined",
+        cell: (props) => {
+          console.log(
+            moment(props.getValue<string>()).format("MMMM Do YYYY, h:mm:ss a")
+          );
+          return (
+            <p>
+              {moment(props.getValue<string>()).format(
+                "MMMM Do YYYY, h:mm:ss a"
+              )}
+            </p>
+          );
+        },
+      },
+      {
+        accessorKey: "status",
+        header: "Status",
+        cell: ({ row }) => (
+          <p className={`${row.original.status?.toLowerCase()}`}>
+            {row.original.status}
+          </p>
+        ),
+      },
+      {
+        accessorKey: "action",
+        header: () => null,
+        cell: ({ row }) => {
+          const isMenuOpen = openMenuRowId === row.original.id;
+          return (
+            <div className="menuContainer">
+              <button
+                onClick={() =>
+                  setOpenMenuRowId(isMenuOpen ? null : row.original.id)
+                }
+              >
+                <img src={assets.dot} alt="filter" />
+              </button>
+              {isMenuOpen && <UserDetailMenuPop userId={row.original.id} />}
+            </div>
+          );
+        },
+      },
+    ],
+    [openMenuRowId]
+  );
 
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+  const table = useReactTable({
+    data,
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+  });
+
+  const handleFilterIconClick = useCallback(() => {
+    setIsFilterModal((prev) => !prev);
+  }, []);
 
   return (
     <>
-      <div className="overviewTableContainer">
-        <table className="table">
-          {/* header */}
-          <thead className="tableHeaderBox">
-            {isFilterModal && <UserDetailFilterPop />}
-            {headers.map((header, index) => (
-              <tr>
-                <th
-                  key={index}
-                  onClick={() => setIsFilterModal(!isFilterModal)}
-                  className={`tableTitleBox ${header.className}`}
-                >
-                  <p className="tableText">{header.label}</p>
-                  <img
-                    className="filterIcon"
-                    src={assets.filter}
-                    alt="filter"
-                  />
-                </th>
-              </tr>
-            ))}
-          </thead>
-
-          {/* body */}
-          <tbody>
-            {currentPosts.map((user: User) => (
-              <TableBodyRow key={user.id} user={user} />
-            ))}
-          </tbody>
-        </table>
+      <div className="tableWrapper">
+        {isFilterModal && <UserDetailFilterPop />}
+        <div className="table-container">
+          <table className="table">
+            <thead>
+              {table.getHeaderGroups().map((headerGroup) => (
+                <tr key={headerGroup.id}>
+                  {headerGroup.headers.map((header) => (
+                    <th key={header.id}>
+                      {header.isPlaceholder ? null : (
+                        <div>
+                          {flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
+                          {header.id !== "action" && (
+                            <img
+                              onClick={handleFilterIconClick}
+                              className="filterIcon"
+                              src={assets.filter}
+                              alt="filter"
+                            />
+                          )}
+                        </div>
+                      )}
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody>
+              {table.getRowModel().rows.map((row) => (
+                <tr key={row.id}>
+                  {row.getVisibleCells().map((cell) => (
+                    <td key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
-      <TablePagination
-        postsPerPage={postsPerPage}
-        totalPosts={users.length}
-        paginate={paginate}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
+      <div className="paginateContainer">
+        <div className="top">
+          <p className="paginateText">Showing</p>
+          <div className="paginateSelectContainer">
+            <select
+              className="paginateSelect"
+              value={table.getState().pagination.pageSize}
+              onChange={(e) => {
+                table.setPageSize(Number(e.target.value));
+              }}
+            >
+              {[100, 200, 300, 400, 500].map((pageSize) => (
+                <option
+                  key={pageSize}
+                  className="paginateOption"
+                  value={pageSize}
+                >
+                  {pageSize}
+                </option>
+              ))}
+            </select>
+          </div>
+          <p className="paginateText">out of {data.length}</p>
+        </div>
+        <TablePagination2
+          currentPage={table.getState().pagination.pageIndex + 1}
+          totalPages={table.getPageCount()}
+          onPageChange={(page: any) => table.setPageIndex(page - 1)}
+        />
+      </div>
     </>
   );
 };
