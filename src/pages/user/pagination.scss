@@ -16,7 +16,7 @@
       margin: 0 10px 0 0;
       font-size: $fs-10;
       font-weight: $fw-400;
-      color: $lightBlue;
+      color: $primary-lighter;
       &:last-child {
         margin: 0 10px 0 10px;
       }
@@ -35,13 +35,13 @@
 
         font-size: $fs-10;
         font-weight: $fw-500;
-        color: $lightBlue;
+        color: $primary-lighter;
         cursor: pointer;
 
         &:hover,
         &:active,
         &:focus {
-          outline-color: $lightBlue;
+          outline-color: $primary-lighter;
         }
       }
     }
@@ -68,14 +68,14 @@
       margin: 0 15px 0 0;
       font-size: $fs-8;
       font-weight: $fw-400;
-      color: $lightBlue;
+      color: $primary-lighter;
       padding: 5px;
       cursor: pointer;
 
       // &:hover,
       &:active,
       &:focus {
-        outline-color: $lightBlue;
+        outline-color: $primary-lighter;
         background: rgba(33, 63, 125, 0.1);
         padding: 5px;
         border-radius: 4px;
@@ -83,7 +83,7 @@
     }
 
     .paginateValue.active {
-      outline-color: $lightBlue;
+      outline-color: $primary-lighter;
       background: rgba(33, 63, 125, 0.1);
       padding: 5px;
       border-radius: 4px;

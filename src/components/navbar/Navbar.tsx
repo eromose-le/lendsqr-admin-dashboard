@@ -32,7 +32,7 @@ const Navbar: FC = () => {
           <img
             className="action user"
             id="user"
-            src="https://i.ibb.co/2jNk5WT/BA-png-black.png"
+            src={assets.user_avatar}
             alt="user"
           />
           <img
@@ -64,7 +64,7 @@ const Navbar: FC = () => {
                 <img
                   className="action user"
                   id="user"
-                  src="https://i.ibb.co/2jNk5WT/BA-png-black.png"
+                  src={assets.user_avatar}
                   alt="user"
                 />
               </button>
@@ -91,11 +91,7 @@ const Navbar: FC = () => {
             src={assets.notification}
             alt="notification"
           />
-          <img
-            className="action user"
-            src="https://i.ibb.co/2jNk5WT/BA-png-black.png"
-            alt="user"
-          />
+          <img className="action user" src={assets.user_avatar} alt="user" />
           <p className="action name">Adedeji</p>
           <img
             className="action arrow"

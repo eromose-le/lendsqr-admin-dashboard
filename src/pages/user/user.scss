@@ -2,7 +2,6 @@
 @import "@/styles/breakpoints.scss";
 
 .dashboard {
-  // background-color: green;
   width: 100%;
   padding: 0%;
   margin: 0%;
@@ -17,7 +16,7 @@
       cursor: pointer;
 
       &:hover {
-        color: $darkBlue;
+        color: $primary-dark;
         transition: ease-in-out 0.2s;
       }
 
@@ -38,7 +37,7 @@
       margin-block: 20px;
 
       h3 {
-        color: $darkBlue;
+        color: $primary-dark;
         font-size: $fs-5;
         font-weight: $fw-500;
 
@@ -58,8 +57,8 @@
         font-weight: $fw-600;
 
         button {
-          border: 1px solid $red;
-          color: $red;
+          border: 1px solid $tertiary-red;
+          color: $tertiary-red;
           border-radius: 8px;
           padding: 0.8em 1.2em;
           text-transform: uppercase;
@@ -69,7 +68,7 @@
           &:hover,
           &active,
           &:focus {
-            background-color: $white;
+            background-color: $tertiary-white-lighter;
             opacity: 0.7;
           }
           @media (max-width: 900px) {
@@ -78,8 +77,8 @@
         }
 
         button:last-child {
-          border: 1px solid $lightGreen;
-          color: $lightGreen;
+          border: 1px solid $secondary-light;
+          color: $secondary-light;
           margin-left: 10px;
         }
 
@@ -96,7 +95,7 @@
     }
 
     .userInfoContainer {
-      background: $white;
+      background: $tertiary-white-lighter;
       padding: 20px;
       display: flex;
       align-items: center;
@@ -107,7 +106,7 @@
       .divider {
         height: 60px;
         width: 2px;
-        background: $opacityBlue;
+        background: $primary-light;
         margin-inline: 30px;
       }
 
@@ -117,14 +116,14 @@
         gap: 20px;
 
         .name {
-          color: $darkBlue;
+          color: $primary-dark;
           font-size: 22px;
           font-weight: $font-weight-light;
           margin-bottom: 6px;
         }
 
         .id {
-          color: $lightBlue;
+          color: $primary-lighter;
           font-weight: $font-weight-thin;
           font-size: $font-small;
         }
@@ -147,7 +146,7 @@
         align-items: start;
         gap: 8px;
         .tierInfo {
-          color: $lightBlue;
+          color: $primary-lighter;
           font-weight: $fw-500;
           font-size: $font-small;
         }
@@ -155,14 +154,14 @@
 
       .userAccountInfo {
         .amount {
-          color: $darkBlue;
+          color: $primary-dark;
           font-size: 22px;
           font-weight: $font-weight-light;
           margin-bottom: 6px;
         }
 
         .bankName {
-          color: $lightBlue;
+          color: $primary-lighter;
           font-weight: $font-weight-thin;
           font-size: $font-small;
         }
@@ -188,28 +187,19 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      background-color: $white;
+      background-color: $tertiary-white-lighter;
       width: 100%;
       padding-top: 20px;
-      // padding-inline: 20px;
-      // background-color: red;
 
       .dashNavWrapper {
-        // display: flex;
-        // align-items: center;
-        // justify-content: space-around;
-        // flex-wrap: wrap;
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         grid-gap: 0px;
-        // gap: 20px;
         .dashLink {
-          color: $black;
+          color: $tertiary-black;
           font-size: $fs-8;
           font-weight: $font-weight-thin;
-          // background-color: yellow;
           min-width: 130px;
-          // width: max-content;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -219,14 +209,14 @@
           &:hover,
           &:focus,
           &:active {
-            border-bottom: 2px solid $lightGreen;
-            color: $lightGreen;
+            border-bottom: 2px solid $secondary-light;
+            color: $secondary-light;
             transition: ease-in-out 0.2s;
           }
         }
         .dashLink.active {
-          border-bottom: 2px solid $lightGreen;
-          color: $lightGreen;
+          border-bottom: 2px solid $secondary-light;
+          color: $secondary-light;
         }
 
         @media (max-width: 1170px) {
@@ -249,7 +239,7 @@
     @media (max-width: 700px) {
       .userInfoContainer > * {
         margin-block: 5px;
-        border-bottom: 1px solid $opacityBlue;
+        border-bottom: 1px solid $primary-light;
         width: 100%;
         padding: 10px;
       }
@@ -260,7 +250,7 @@
   }
 
   .dashInfoBodyContainer {
-    background-color: $white;
+    background-color: $tertiary-white-lighter;
     border: 1px solid rgba(33, 63, 125, 0.06);
     box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
     border-radius: 4px;
@@ -269,8 +259,7 @@
 
     .dashInfoItemBox {
       padding: 10px 30px 10px 0;
-      border-bottom: 2px solid $opacityBlue;
-      // background-color: yellow;
+      border-bottom: 2px solid $primary-light;
 
       // title
       .dashInfoHeader {
@@ -278,15 +267,11 @@
         font-weight: $font-weight-light;
         margin-bottom: 20px;
         padding-top: 10px;
-        color: $darkBlue;
+        color: $primary-dark;
       }
 
       // wrapper
       .dashInfoWrapper {
-        // display: flex;
-        // align-items: center;
-        // justify-content: flex-start;
-        // flex-wrap: wrap;
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         grid-gap: 0px;
@@ -309,13 +294,13 @@
             margin: 0;
             margin-bottom: 5px;
             text-transform: uppercase;
-            color: $lightBlue;
+            color: $primary-lighter;
           }
 
           .info {
             font-size: $font-medium;
             font-weight: $font-weight-light;
-            color: $darkBlue;
+            color: $primary-dark;
           }
 
           @media (max-width: 700px) {
@@ -328,6 +313,13 @@
         }
 
         @media (max-width: 1190px) {
+          grid-template-columns: repeat(4, 1fr);
+
+          .dashInfoHeader {
+            grid-column: span 1;
+          }
+        }
+        @media (max-width: 1448px) {
           grid-template-columns: repeat(4, 1fr);
 
           .dashInfoHeader {

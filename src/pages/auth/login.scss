@@ -78,7 +78,7 @@
 
         .title {
           font-size: $font-2xl;
-          color: $darkBlue;
+          color: $primary-dark;
           font-family: $avenir-next-font;
           font-weight: $font-weight-bold;
           margin: 0px;
@@ -111,7 +111,7 @@
 
         .inputContainer {
           border: none;
-          border: 2px solid $borderGrey;
+          border: 2px solid $tertiary-grey-light;
           border-radius: 5px;
           gap: 4px;
           display: flex;

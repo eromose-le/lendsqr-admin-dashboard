@@ -62,7 +62,7 @@
     }
 
     &:hover {
-      border-left: 3px solid $lightGreen;
+      border-left: 3px solid $secondary-light;
       border-left-width: 5px;
       transition: ease-in-out 0.2s;
 
@@ -118,8 +118,8 @@
 
     &:hover,
     &:focus {
-      background-color: $opacityGreen;
-      border-left: 3px solid $lightGreen;
+      background-color: $secondary-dark;
+      border-left: 3px solid $secondary-light;
       border-left-width: 5px;
       color: $primary-dark;
       font-weight: $fw-400;
@@ -131,7 +131,7 @@
     }
 
     .text {
-      color: $lightBlue;
+      color: $primary-lighter;
 
       &:hover,
       &active,
@@ -159,11 +159,11 @@
 
   .lastItem {
     margin-block: 20px;
-    border-top: 2px solid $opacityBlue;
+    border-top: 2px solid $primary-light;
   }
 
   .logout {
-    border-top: 2px solid $opacityBlue;
+    border-top: 2px solid $primary-light;
     margin-block: 30px;
   }
 

@@ -31,6 +31,7 @@ import sign_out from "../images/dashboard/sign-out.svg";
 
 import back from "../images/user/back.svg";
 import avatar from "../images/user/avatar.svg";
+import user_avatar from "../images/user/avatar-user.svg";
 
 import activate from "../images/overview/activate.svg";
 import blacklist from "../images/overview/blacklist.svg";
@@ -83,6 +84,7 @@ const assets = {
 
   back,
   avatar,
+  user_avatar,
 
   activate,
   blacklist,
