@@ -58,7 +58,7 @@ export const StarRating: React.FC<StarRatingProps> = ({ value, readOnly }) => {
       onMouseOver={hoverOver}
       style={{ display: "flex", padding: "0", margin: "0", gap: "4px" }}
     >
-      {Array.from({ length: 3 }, (v, i) => (
+      {Array.from({ length: 3 }, (_v, i) => (
         <Star
           starId={i + 1}
           key={`star_${i + 1}`}

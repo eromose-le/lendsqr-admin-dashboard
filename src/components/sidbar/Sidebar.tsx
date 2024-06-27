@@ -8,7 +8,7 @@ import "react-tooltip/dist/react-tooltip.css";
 
 export const Sidebar = () => {
   const navigate = useNavigate();
-  const [activeItem, setActiveItem] = useState<string>("");
+  const [_activeItem, setActiveItem] = useState<string>("");
   const [tooltip, setTooltip] = useState<boolean>(false);
 
   const handleItemClick = (item: SidebarNavItem) => {

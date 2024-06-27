@@ -38,7 +38,7 @@ export const lendsqlApi = createApi({
         const data = await fetchUserDetailData();
         return { data };
       },
-      onQueryStarted: async (arg, { queryFulfilled, dispatch }) => {
+      onQueryStarted: async (_arg, { queryFulfilled, dispatch }) => {
         try {
           const data = await queryFulfilled;
 

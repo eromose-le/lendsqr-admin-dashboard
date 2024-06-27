@@ -42,7 +42,7 @@ const storeQ = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       lendsqlApi.middleware,
-      rtkqOnResetMiddleware(lendsqlApi)
+      rtkqOnResetMiddleware()
     ),
 
   devTools: isDevelopment,
@@ -68,8 +68,8 @@ storeQ.subscribe(
   }, 1000)
 );
 
-export function rtkqOnResetMiddleware(...apis: any[]) {
-  return (store: any) => (next: any) => (action: any) => {
+export function rtkqOnResetMiddleware() {
+  return () => (next: any) => (action: any) => {
     const result = next(action);
     // for (const api of apis) {
     //   store.dispatch(api.util.resetApiState());
