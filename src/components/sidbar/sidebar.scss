@@ -5,8 +5,6 @@
   height: 100%;
 
   .headerItemContainer {
-    // section
-    // section {
     position: relative;
     display: flex;
     align-items: center;
@@ -21,13 +19,6 @@
 
     span {
       margin-left: 5px;
-    }
-
-    @media (max-width: 900px) {
-      // p,
-      // span {
-      //   font-size: $fs-10;
-      // }
     }
 
     @media (max-width: 700px) {
@@ -45,7 +36,6 @@
         display: none;
       }
     }
-    // }
     padding-block: 30px;
 
     .text {
@@ -78,8 +68,6 @@
   }
 
   .itemContainer {
-    // section
-    // section {
     display: flex;
     align-items: center;
     font-size: $fs-8;
@@ -117,7 +105,7 @@
         display: none;
       }
     }
-    // }
+
     margin-block: 10px;
     cursor: pointer;
 

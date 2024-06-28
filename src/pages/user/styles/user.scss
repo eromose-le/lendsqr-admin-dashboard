@@ -219,6 +219,14 @@
           color: $secondary-light;
         }
 
+        @include xs {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          align-items: center;
+          justify-content: center;
+        }
+
         @media (max-width: 1170px) {
           grid-template-columns: repeat(4, 1fr);
 
@@ -230,6 +238,7 @@
         @include sm {
           grid-template-columns: repeat(3, 1fr);
         }
+
         @media (max-width: 565px) {
           grid-template-columns: repeat(2, 1fr);
         }
@@ -261,7 +270,6 @@
       padding: 10px 30px 10px 0;
       border-bottom: 2px solid $primary-light;
 
-      // title
       .dashInfoHeader {
         font-size: $font-medium;
         font-weight: $font-weight-light;
@@ -270,7 +278,6 @@
         color: $primary-dark;
       }
 
-      // wrapper
       .dashInfoWrapper {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
@@ -305,9 +312,13 @@
 
           @media (max-width: 700px) {
             min-width: 90%;
+            margin: 0 1rem 1rem 0;
           }
 
           @media (max-width: 500px) {
+            .info {
+              font-size: $font-small;
+            }
             width: 100px;
           }
         }
