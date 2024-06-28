@@ -15,7 +15,7 @@ import "../pages/user/styles/pagination.scss";
 import { lendsqlApi } from "@/store/storeQuerySlice";
 import Loading from "./Loading";
 import { routeEnum } from "@/constants/RouteConstants";
-import { useNavigate } from "react-router-dom";
+import { generatePath, useNavigate } from "react-router-dom";
 
 interface User {
   id: string;
@@ -56,11 +56,7 @@ export const Table: React.FC = () => {
       {
         accessorKey: "phoneNumber",
         header: "Phone number",
-        cell: (props) => (
-          <p>
-            {moment(props.getValue<string>()).format("MMMM Do YYYY, h:mm:ss a")}
-          </p>
-        ),
+        cell: (props) => <p>{props.getValue<string>()}</p>,
       },
       {
         accessorKey: "createdAt",
@@ -157,12 +153,17 @@ export const Table: React.FC = () => {
                     <tr key={row.id}>
                       {row.getVisibleCells().map((cell) => (
                         <td
-                          key={cell.id}
+                          key={cell?.id}
                           onClick={() => {
                             if (
                               cell.getContext()?.cell?.column?.id !== "action"
                             )
-                              navigate(routeEnum.USERS_DETAILS);
+                              navigate(
+                                generatePath(routeEnum.USERS_DETAILS, {
+                                  id: cell.getContext()?.cell?.row?.original
+                                    ?.id,
+                                })
+                              );
                           }}
                         >
                           {flexRender(

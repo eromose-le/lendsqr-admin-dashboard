@@ -50,7 +50,7 @@ const TablePagination: React.FC<PaginationProps> = ({
             {page}
           </button>
         ) : (
-          <span key={index} className="dots">
+          <span key={index} className="dots paginateValue">
             {page}
           </span>
         )

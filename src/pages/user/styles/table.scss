@@ -832,6 +832,9 @@
           align-items: center;
           justify-content: start;
           gap: 10px;
+           img {
+            cursor: pointer;
+           }
         }
       }
     }
@@ -930,6 +933,10 @@
               background-color: darken($primary-dark, 10%);
             }
           }
+        }
+
+        &:hover {
+          background-color: $tertiary-white-dark;
         }
       }
     }

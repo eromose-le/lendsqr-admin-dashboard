@@ -1,7 +1,7 @@
 @import "@/styles/variables";
 .paginateContainer {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   background-color: $tertiary-white;
   padding: 10px 0;
@@ -10,16 +10,13 @@
     display: flex;
     align-items: center;
     flex: 1;
+    gap: 10px;
 
     .paginateText {
       padding: 0;
-      margin: 0 10px 0 0;
       font-size: $fs-10;
       font-weight: $fw-400;
       color: $primary-lighter;
-      &:last-child {
-        margin: 0 10px 0 10px;
-      }
     }
 
     .paginateSelectContainer {
@@ -27,9 +24,8 @@
       align-items: center;
 
       .paginateSelect {
-        padding: 8px 12px;
         border: none;
-        border-right: 14px solid transparent;
+        border-right: 10px solid transparent;
         background: rgba(33, 63, 125, 0.1);
         border-radius: 4px;
 
@@ -52,6 +48,7 @@
     align-items: center;
     flex: 1;
     justify-content: flex-end;
+    gap: 20px;
     flex-wrap: wrap;
 
     .paginateArrowIcon {
@@ -65,14 +62,13 @@
     }
     .paginateValue {
       padding: 0;
-      margin: 0 15px 0 0;
+      margin: 0 0 0 0;
       font-size: $fs-8;
       font-weight: $fw-400;
       color: $primary-lighter;
       padding: 5px;
       cursor: pointer;
 
-      // &:hover,
       &:active,
       &:focus {
         outline-color: $primary-lighter;
@@ -96,15 +92,23 @@
     align-items: flex-start;
 
     .top {
+      gap: 10px;
       margin-bottom: 8px;
     }
 
     .down {
+      gap: 10px;
       .paginateArrowIcon {
         margin-left: 0;
       }
 
       justify-content: flex-start;
+    }
+  }
+
+  @media (max-width: 1037px) {
+    .down {
+      gap: 10px;
     }
   }
 }
