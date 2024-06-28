@@ -28,7 +28,9 @@ const Login: FC = () => {
 
           <div className="inputWrapper">
             <div className="inputContainer">
+              <label className="hide" htmlFor="email">Email</label>
               <input
+                id="email"
                 className="input"
                 type="email"
                 placeholder="Email"
@@ -36,7 +38,9 @@ const Login: FC = () => {
               />
             </div>
             <div className="inputContainer">
+              <label className="hide" htmlFor="password">Password</label>
               <input
+                id="password"
                 className="input"
                 type={isShow ? "text" : "password"}
                 placeholder="Password"

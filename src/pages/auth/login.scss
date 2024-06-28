@@ -186,6 +186,10 @@
       }
     }
 
+    .hide {
+      display: none;
+    }
+
     @include sm {
       justify-content: center;
       padding: 0 5% 0 5%;

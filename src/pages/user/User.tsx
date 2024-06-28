@@ -4,7 +4,7 @@ import { lazy } from "react";
 import { Navigate, useRoutes } from "react-router-dom";
 import { configureRoutes } from "@/utils/RouterUtils";
 
-function Session() {
+function User() {
   const routes = useRoutes(ROUTES);
 
   return (
@@ -14,7 +14,7 @@ function Session() {
   );
 }
 
-export default Session;
+export default User;
 
 const ROUTES = configureRoutes(
   [

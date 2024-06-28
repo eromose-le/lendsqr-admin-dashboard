@@ -8,6 +8,7 @@
   - [Routes](#routes)
   - [File Directory Structure](#file-directory-structure)
   - [Setup and Running the Application](#setup-and-running-the-application)
+  - [Testing](#testing)
   - [Behaviour](#behaviour)
 
 ## Introduction
@@ -25,6 +26,7 @@ Lendsqr Admin User Dashboard is a single-page web application designed to manage
 - **Sass**: Used for styling React components.
 - **Vite**: A modern bundler for React, known for its speed and optimization.
 - **Typescript**: Provides type safety and helps catch bugs at runtime.
+- **Jest**: A react tool for unit testing.
 
 ## Routes
 - `/dashboard`: Shows the overview of the dashboard.
@@ -45,7 +47,7 @@ Lendsqr Admin User Dashboard is a single-page web application designed to manage
 - **utils**: Contains all utility or helper functions.
 - **types**: Contains all TypeScript files and folders.
 - **src**: Contains all file folders plus the root files, data files for dummy user data, and TypeScript bypass files.
-- **root dir**: Contains env files, gitignore files, TypeScript configuration files, index files, Vite configuration files, ESLint files, and package.json files.
+- **root dir**: Contains env files, gitignore files, TypeScript configuration files, index files, Vite configuration files, ESLint files, and package.json files, test files.
 
 ## Setup and Running the Application
 To set up the project and run the application, follow these steps:
@@ -56,6 +58,12 @@ To set up the project and run the application, follow these steps:
 2. Start the development server:
     ```bash
     yarn dev
+    ```
+
+## Testing
+1. Run test script:
+    ```bash
+    yarn test
     ```
 
 ## Behaviour
